@@ -1,33 +1,41 @@
+// in com.example.studentmanagementsystem.util.Prefs.java
 package com.example.studentmanagementsystem.util;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import com.example.studentmanagementsystem.model.User;
+import com.google.gson.Gson;
 
 public class Prefs {
-    private static final String PREFS_NAME = "student_prefs";
-    private static final String KEY_TOKEN = "session_token";
-    private static final String KEY_USER_TYPE = "user_type";
+    private static Prefs instance;
+    private final SharedPreferences prefs;
+    private final Gson gson = new Gson();
 
-    public static void saveToken(Context ctx, String token) {
-        ctx.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-                .edit().putString(KEY_TOKEN, token).apply();
+    private Prefs(Context context) {
+        prefs = context.getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
     }
 
-    public static String getToken(Context ctx) {
-        return ctx.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-                .getString(KEY_TOKEN, null);
+    public static synchronized Prefs getInstance(Context context) {
+        if (instance == null) {
+            instance = new Prefs(context.getApplicationContext());
+        }
+        return instance;
     }
 
-    public static void saveUserType(Context ctx, String type) {
-        ctx.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-                .edit().putString(KEY_USER_TYPE, type).apply();
+    public void saveUser(User user) {
+        String userJson = gson.toJson(user);
+        prefs.edit().putString("LOGGED_IN_USER", userJson).apply();
     }
 
-    public static String getUserType(Context ctx) {
-        return ctx.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-                .getString(KEY_USER_TYPE, "");
+    public User getUser() {
+        String userJson = prefs.getString("LOGGED_IN_USER", null);
+        if (userJson == null) {
+            return null;
+        }
+        return gson.fromJson(userJson, User.class);
     }
 
-    public static void clear(Context ctx) {
-        ctx.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE).edit().clear().apply();
+    public void clear() {
+        prefs.edit().clear().apply();
     }
 }

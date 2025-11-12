@@ -14,6 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.bumptech.glide.Glide;
+import com.example.studentmanagementsystem.ui.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
     private static final int SPLASH_TIME_OUT = 4000; // 4 seconds
@@ -45,7 +46,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                 finish(); // close splash activity
             }
         }, SPLASH_TIME_OUT);

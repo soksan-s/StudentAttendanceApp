@@ -3,10 +3,25 @@
     <style name="Base.Theme.StudentManagementSystem" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Customize your primary colors using your defined colors.xml -->
+        <item name="colorPrimary">@color/primaryGreen</item>
+        <item name="colorPrimaryVariant">@color/primaryGreen</item> <!-- You can create a darker green or reuse the primary one -->
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secondaryRed</item>
+        <item name="colorSecondaryVariant">@color/secondaryRed</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <item name="android:fontFamily">@font/roboto_regular</item>
 
     </style>
 
+        <style name="Theme.StudentAttendanceSystem.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+        <style name="Theme.StudentAttendanceSystem.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 
