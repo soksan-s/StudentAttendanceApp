@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.TakeAttendanceActivity">
+
+    <!-- A RecyclerView to display the list of students -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_students"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_submit_attendance"
+        android:padding="8dp"
+        tools:listitem="@layout/item_student_attendance" />
+
+    <!-- A ProgressBar to show while loading data -->
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
+    <!-- The submit button at the bottom -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_submit_attendance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:text="Submit Attendance"
+        android:padding="12dp"
+        android:textSize="16sp" />
+
+</RelativeLayout>

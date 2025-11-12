@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/student_nav_graph"
+    app:startDestination="@id/myCoursesFragment">
+
+    <!-- Define your student-specific fragments here -->
+    <fragment
+        android:id="@+id/myCoursesFragment"
+        android:name="com.example.studentmanagementsystem.ui.student.MyCoursesFragment"
+        android:label="My Courses"
+        tools:layout="@layout/fragment_my_courses" />
+
+    <fragment
+        android:id="@+id/myGradesFragment"
+        android:name="com.example.studentmanagementsystem.ui.student.MyGradesFragment"
+        android:label="My Grades"
+        tools:layout="@layout/fragment_my_grades" />
+
+    <fragment
+        android:id="@+id/studentProfileFragment"
+        android:name="com.example.studentmanagementsystem.ui.student.StudentProfileFragment"
+        android:label="My Profile"
+        tools:layout="@layout/fragment_student_profile" />
+
+</navigation>

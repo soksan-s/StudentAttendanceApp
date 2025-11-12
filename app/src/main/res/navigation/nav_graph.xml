@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/studentListFragment">
+
+    <!-- Destination for Student List -->
+    <fragment
+        android:id="@+id/studentListFragment"
+        android:name="com.example.studentmanagementsystem.ui.StudentListFragment"
+        android:label="Students"
+        tools:layout="@layout/fragment_student_list" />
+
+    <!-- Destination for Courses -->
+    <fragment
+        android:id="@+id/courseListFragment"
+        android:name="com.example.studentmanagementsystem.ui.CourseListFragment"
+        android:label="Courses"
+        tools:layout="@layout/fragment_course_list" />
+
+    <!-- Destination for Settings -->
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.studentmanagementsystem.ui.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings" />
+
+</navigation>

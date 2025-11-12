@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permission to connect to the internet for API calls -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -10,25 +13,100 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.StudentManagementSystem">
-        <activity
-            android:name=".ui.StudentDashboardActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.TeacherDashboardActivity"
-            android:exported="false" /> <!-- SplashActivity should launch first -->
+        android:theme="@style/Theme.StudentManagementSystem"
+        tools:targetApi="31">
+
+        <!-- 1. Splash Activity: This is the first screen the user sees. -->
         <activity
             android:name=".SplashActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar"> <!-- Optional: for a true fullscreen splash -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- MainActivity will open after Splash -->
+        </activity>
+
+        <!-- 2. Login Activity: Launched after the Splash screen. -->
+        <activity
+            android:name=".ui.LoginActivity"
+            android:exported="false"/>
+<!--            android:theme="@style/Theme.AppCompat.NoActionBar"/> -->
+
+        <!-- 3. Teacher Dashboard Activity: Launched after a TEACHER logs in. -->
+        <activity
+            android:name=".ui.TeacherDashboardActivity"
+            android:label="Teacher Dashboard"
+            android:exported="false" />
+
+        <!-- 4. Student Dashboard Activity: Launched after a STUDENT logs in. -->
+        <activity
+            android:name=".ui.StudentDashboardActivity"
+            android:label="Student Dashboard"
+            android:exported="false" />
+
+        <!-- 5. Take Attendance Activity: Launched from the Teacher Dashboard. -->
+        <activity
+            android:name=".ui.TakeAttendanceActivity"
+            android:exported="false"
+            android:label="Take Attendance"
+            android:parentActivityName=".ui.TeacherDashboardActivity">
+            <!-- The parentActivityName adds the back arrow in the toolbar -->
+        </activity>
+
+        <!-- 6. MainActivity: Kept for reference, but not directly launched from login. -->
+        <!-- You might be using this as your old teacher dashboard or for another purpose. -->
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
     </application>
 
 </manifest>
+
+
+
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<manifest xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools">-->
+
+<!--    <uses-permission android:name="android.permission.INTERNET" />-->
+
+<!--    <application-->
+<!--        android:allowBackup="true"-->
+<!--        android:dataExtractionRules="@xml/data_extraction_rules"-->
+<!--        android:fullBackupContent="@xml/backup_rules"-->
+<!--        android:icon="@mipmap/ic_launcher"-->
+<!--        android:label="@string/app_name"-->
+<!--        android:roundIcon="@mipmap/ic_launcher_round"-->
+<!--        android:supportsRtl="true"-->
+<!--        android:theme="@style/Theme.StudentManagementSystem">-->
+<!--        <activity-->
+<!--            android:name=".ui.TakeAttendanceActivity"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".ui.LoginActivity"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".ui.StudentDashboardActivity"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".ui.TeacherDashboardActivity"-->
+<!--            android:exported="false" /> &lt;!&ndash; SplashActivity should launch first &ndash;&gt;-->
+<!--        <activity-->
+<!--            android:name=".SplashActivity"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity> &lt;!&ndash; MainActivity will open after Splash &ndash;&gt;-->
+<!--        <activity-->
+<!--            android:name=".MainActivity"-->
+<!--            android:exported="false" />-->
+<!--    </application>-->
+
+<!--</manifest>-->

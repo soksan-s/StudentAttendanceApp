@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/myCoursesFragment"
+            android:icon="@drawable/ic_note"
+            android:title="My Courses" />
+        <item
+            android:id="@+id/myGradesFragment"
+            android:icon="@drawable/ic_note"
+        android:title="My Grades" />
+        <item
+            android:id="@+id/studentProfileFragment"
+            android:icon="@drawable/ic_person_outline"
+            android:title="My Profile" />
+        <item
+            android:id="@+id/btnLogout"
+            android:icon="@drawable/logout_24dp"
+            android:title="Logout"/>
+
+    </group>
+</menu>

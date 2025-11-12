@@ -1,23 +1,30 @@
 package com.example.studentmanagementsystem.api;
 
-import com.example.studentmanagementsystem.model.LoginResponse;
+import com.example.studentmanagementsystem.model.LoginRequest;
+// We will create this new LoginResponseWrapper class
+import com.example.studentmanagementsystem.model.LoginResponseWrapper;
 import com.example.studentmanagementsystem.model.User;
 
-import java.util.List;
-
 import retrofit2.Call;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiServices {
-    @FormUrlEncoded
-    @POST("api/user") // <-- change to your actual API endpoint
-    Call<LoginResponse> login(
-            @Field("username") String username,
-            @Field("password") String password
-    );
-    @GET("api/user")
-    Call<List<User>> getAllUsers();
+
+    /**
+     * Step 1: Login with email and password.
+     * The server will respond with a success message and set a session cookie.
+     * We change the response type to `Void` because we only care about the success/failure and the cookie.
+     */
+    @POST("api/login") // Use your actual login endpoint
+    Call<Void> login(@Body LoginRequest loginRequest);
+
+    /**
+     * Step 2: Get the current user's data using the session cookie.
+     * Retrofit will automatically handle sending the cookie that was set in Step 1.
+     * The response from `/api/me` is nested, so we need a wrapper class.
+     */
+    @GET("api/me")
+    Call<LoginResponseWrapper> getMe();
 }

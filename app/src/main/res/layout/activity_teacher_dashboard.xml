@@ -2,9 +2,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:background="@color/white"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".ui.TeacherDashboardActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,7 +36,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <TextView android:text="Take Attendance" android:textSize="18sp"/>
+                <TextView android:text="Take Attendance" android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -50,7 +54,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <TextView android:text="View Performance" android:textSize="18sp"/>
+                <TextView android:text="View Performance" android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
