@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_teacher_home"
+        android:icon="@drawable/outline_home"
+        android:title="Dashboard" />
+
+    <item
+        android:id="@+id/nav_take_attendance"
+        android:icon="@drawable/outline_bookmark"
+        android:title="Take Attendance" />
+
+    <item
+        android:id="@+id/nav_view_performance"
+        android:icon="@drawable/outline_report"
+        android:title="View Performance" />
+
+    <item
+        android:id="@+id/nav_get_report"
+        android:icon="@drawable/outline_down"
+        android:title="Get Report" />
+
+    <!-- Logout Item -->
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/logout_24dp"
+                android:title="Logout" />
+        </menu>
+    </item>
+
+</menu>

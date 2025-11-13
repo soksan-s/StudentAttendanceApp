@@ -3,25 +3,68 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/student_nav_graph"
-    app:startDestination="@id/myCoursesFragment">
+    app:startDestination="@id/nav_student_home">
 
-    <!-- Define your student-specific fragments here -->
+    <!-- Home Fragment (No Change) -->
     <fragment
-        android:id="@+id/myCoursesFragment"
-        android:name="com.example.studentmanagementsystem.ui.student.MyCoursesFragment"
-        android:label="My Courses"
-        tools:layout="@layout/fragment_my_courses" />
+        android:id="@+id/nav_student_home"
+        android:name="com.example.studentmanagementsystem.ui.student.StudentHomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_student_home" />
 
+    <!-- NEW: My Schedule Fragment -->
     <fragment
-        android:id="@+id/myGradesFragment"
-        android:name="com.example.studentmanagementsystem.ui.student.MyGradesFragment"
-        android:label="My Grades"
-        tools:layout="@layout/fragment_my_grades" />
+        android:id="@+id/nav_my_schedule"
+        android:name="com.example.studentmanagementsystem.ui.student.MyScheduleFragment"
+        android:label="My Schedule"
+        tools:layout="@layout/fragment_my_schedule" />
 
+    <!-- NEW: My Attendance Fragment -->
     <fragment
-        android:id="@+id/studentProfileFragment"
+        android:id="@+id/nav_my_attendance"
+        android:name="com.example.studentmanagementsystem.ui.student.MyAttendanceFragment"
+        android:label="My Attendance"
+        tools:layout="@layout/fragment_my_attendance" />
+
+    <!-- Profile Fragment (No Change) -->
+    <fragment
+        android:id="@+id/nav_student_profile"
         android:name="com.example.studentmanagementsystem.ui.student.StudentProfileFragment"
-        android:label="My Profile"
+        android:label="Profile"
         tools:layout="@layout/fragment_student_profile" />
 
+    <!--
+         You can now DELETE the old fragment declarations
+         for MyCoursesFragment and MyGradeFragment from this file.
+    -->
 </navigation>
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<navigation xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:id="@+id/student_nav_graph"-->
+<!--    app:startDestination="@id/myCoursesFragment">-->
+
+<!--    &lt;!&ndash; Define your student-specific fragments here &ndash;&gt;-->
+<!--    <fragment-->
+<!--        android:id="@+id/myCoursesFragment"-->
+<!--        android:name="com.example.studentmanagementsystem.ui.student.MyCoursesFragment"-->
+<!--        android:label="My Courses"-->
+<!--        tools:layout="@layout/fragment_my_courses" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/myGradesFragment"-->
+<!--        android:name="com.example.studentmanagementsystem.ui.student.MyGradesFragment"-->
+<!--        android:label="My Grades"-->
+<!--        tools:layout="@layout/fragment_my_grades" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/studentProfileFragment"-->
+<!--        android:name="com.example.studentmanagementsystem.ui.student.StudentProfileFragment"-->
+<!--        android:label="My Profile"-->
+<!--        tools:layout="@layout/fragment_student_profile" />-->
+<!--    -->
+
+<!--</navigation>-->

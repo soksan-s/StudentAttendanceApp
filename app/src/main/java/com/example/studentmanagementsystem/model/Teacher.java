@@ -2,18 +2,14 @@ package com.example.studentmanagementsystem.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Student {
+public class Teacher {
     @SerializedName("id")
     private String id;
 
     @SerializedName("fullName")
     private String fullName;
 
-    @SerializedName("studentId")
-    private String studentIdNumber;
-
     // Getters
     public String getId() { return id; }
     public String getFullName() { return fullName; }
-    public String getStudentIdNumber() { return studentIdNumber; }
 }

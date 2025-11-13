@@ -1,9 +1,12 @@
 package com.example.studentmanagementsystem.api;
 
+import com.example.studentmanagementsystem.model.ClassApiResponse;
 import com.example.studentmanagementsystem.model.LoginRequest;
 // We will create this new LoginResponseWrapper class
 import com.example.studentmanagementsystem.model.LoginResponseWrapper;
 import com.example.studentmanagementsystem.model.User;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -27,4 +30,8 @@ public interface ApiServices {
      */
     @GET("api/me")
     Call<LoginResponseWrapper> getMe();
+
+    // Add this new method to get the class details
+    @GET("api/class") // The exact path from your URL
+    Call<List<ClassApiResponse>> getClassForAttendance();
 }

@@ -1,37 +1,261 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.TakeAttendanceActivity">
 
-    <!-- A RecyclerView to display the list of students -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_students"
+    <!-- Toolbar at the top -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_take_attendance"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Take Attendance"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <!-- Main content area -->
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/btn_submit_attendance"
-        android:padding="8dp"
-        tools:listitem="@layout/item_student_attendance" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <!-- A ProgressBar to show while loading data -->
-    <ProgressBar
-        android:id="@+id/progress_bar"
+        <!-- This ViewPager2 will display one student at a time -->
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager_attendance"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/navigation_controls"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+
+        <!-- Navigation controls at the bottom -->
+        <RelativeLayout
+            android:id="@+id/navigation_controls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:padding="8dp"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_previous"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:text="Previous"
+                app:icon="@drawable/back_arrow_direction" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_next"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:text="Next"
+                app:icon="@drawable/next_arrow_direction"
+                app:iconGravity="end" />
+
+            <TextView
+                android:id="@+id/tv_student_counter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="15 / 25" />
+
+        </RelativeLayout>
+
+        <!-- Loading and Status Views -->
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_status_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:padding="16dp"
+            android:text="Loading class..."
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <!-- Floating Action Button to submit the attendance -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_submit_attendance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone"/>
-
-    <!-- The submit button at the bottom -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_submit_attendance"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        android:text="Submit Attendance"
-        android:padding="12dp"
-        android:textSize="16sp" />
+        android:contentDescription="Submit Attendance"
+        app:srcCompat="@drawable/correct_right"
+        android:visibility="gone"
+        tools:visibility="visible"/>
 
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:orientation="vertical"-->
+<!--    tools:context=".ui.TakeAttendanceActivity">-->
+
+<!--    <com.google.android.material.appbar.MaterialToolbar-->
+<!--        android:id="@+id/toolbar_take_attendance"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        android:background="?attr/colorPrimary"-->
+<!--        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>-->
+
+<!--    &lt;!&ndash; Add SwipeRefreshLayout as the wrapper &ndash;&gt;-->
+<!--    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
+<!--        android:id="@+id/swipe_refresh_layout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+<!--        <FrameLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+
+<!--            &lt;!&ndash; This RecyclerView will hold the list of students &ndash;&gt;-->
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/rv_students_for_attendance"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:padding="8dp"/>-->
+
+<!--            &lt;!&ndash; This TextView is shown for loading or error states &ndash;&gt;-->
+<!--            <TextView-->
+<!--                android:id="@+id/tv_status_message"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:text="Loading students..."-->
+<!--                android:textSize="18sp"-->
+<!--                android:visibility="gone"/>-->
+
+<!--            &lt;!&ndash; This ProgressBar is shown during initial loading &ndash;&gt;-->
+<!--            <ProgressBar-->
+<!--                android:id="@+id/pb_loading"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:visibility="visible"/>-->
+<!--        </FrameLayout>-->
+
+<!--    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
+<!--</LinearLayout>-->
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:orientation="vertical"-->
+<!--    tools:context=".ui.TakeAttendanceActivity">-->
+
+<!--    <com.google.android.material.appbar.MaterialToolbar-->
+<!--        android:id="@+id/toolbar_take_attendance"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        android:background="?attr/colorPrimary"-->
+<!--        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>-->
+
+<!--    <FrameLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+<!--        &lt;!&ndash; This RecyclerView will hold the list of students &ndash;&gt;-->
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/rv_students_for_attendance"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:padding="8dp"/>-->
+
+<!--        &lt;!&ndash; This TextView is shown for loading or error states &ndash;&gt;-->
+<!--        <TextView-->
+<!--            android:id="@+id/tv_status_message"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:text="Loading students..."-->
+<!--            android:textSize="18sp"-->
+<!--            android:visibility="gone"/>-->
+
+<!--        &lt;!&ndash; This ProgressBar is shown during loading &ndash;&gt;-->
+<!--        <ProgressBar-->
+<!--            android:id="@+id/pb_loading"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:visibility="visible"/>-->
+<!--    </FrameLayout>-->
+<!--</LinearLayout>-->
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".ui.TakeAttendanceActivity">-->
+
+<!--    &lt;!&ndash; A RecyclerView to display the list of students &ndash;&gt;-->
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/rv_students"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_above="@+id/btn_submit_attendance"-->
+<!--        android:padding="8dp"-->
+<!--        tools:listitem="@layout/item_student_attendance" />-->
+
+<!--    &lt;!&ndash; A ProgressBar to show while loading data &ndash;&gt;-->
+<!--    <ProgressBar-->
+<!--        android:id="@+id/progress_bar"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:visibility="gone"/>-->
+
+<!--    &lt;!&ndash; The submit button at the bottom &ndash;&gt;-->
+<!--    <com.google.android.material.button.MaterialButton-->
+<!--        android:id="@+id/btn_submit_attendance"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_margin="16dp"-->
+<!--        android:text="Submit Attendance"-->
+<!--        android:padding="12dp"-->
+<!--        android:textSize="16sp" />-->
+
+<!--</RelativeLayout>-->

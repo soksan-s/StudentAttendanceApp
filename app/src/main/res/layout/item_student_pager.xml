@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Student ID -->
+        <TextView
+            android:id="@+id/tv_student_id_pager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/chip_background"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="4dp"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:text="STU00123" />
+
+        <!-- Student Name -->
+        <TextView
+            android:id="@+id/tv_student_name_pager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="24dp"
+            android:textAlignment="center"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            tools:text="Sakura Haruno" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Attendance Status -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:text="Mark Attendance Status"
+            android:textSize="16sp" />
+
+        <!-- RadioGroup for Ticking Attendance -->
+        <RadioGroup
+            android:id="@+id/rg_attendance_status_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_present_pager"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/radio_button_selector"
+                android:button="@null"
+                android:drawableStart="@drawable/ic_check_circle"
+                android:drawablePadding="8dp"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="12dp"
+                android:text="Present"
+                android:textColor="@color/radio_button_text_selector"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/rb_absent_pager"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/radio_button_selector"
+                android:button="@null"
+                android:drawableStart="@drawable/wrong_delete"
+                android:drawablePadding="8dp"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="12dp"
+                android:text="Absent"
+                android:textColor="@color/radio_button_text_selector"
+                android:textSize="16sp" />
+        </RadioGroup>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

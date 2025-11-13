@@ -9,7 +9,7 @@
     tools:context=".ui.StudentDashboardActivity"
     tools:openDrawer="start">
 
-        <!-- Main Content Area -->
+    <!-- 1. Main Content Area (First Child) -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,42 +32,99 @@
             app:defaultNavHost="true"
             app:navGraph="@navigation/student_nav_graph" />
 
-        </LinearLayout>
+    </LinearLayout>
 
-        <!-- Navigation Drawer (Sidebar) -->
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navigation_view_student"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            app:headerLayout="@layout/nav_header"
-            app:menu="@menu/student_nav_menu" />
-    <androidx.drawerlayout.widget.DrawerLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/studentDrawerLayout"
-        android:layout_width="match_parent"
+    <!-- 2. Navigation Drawer View (Second Child) -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view_student"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        tools:context=".StudentDashboardActivity"
-        tools:openDrawer="start">
-
-        <!-- Your main content (e.g., CoordinatorLayout with Toolbar and NavHostFragment) -->
-        <include
-            layout="@layout/app_bar_student"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <!-- Navigation Drawer -->
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/studentNavView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            app:headerLayout="@layout/nav_header"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/student_nav_header"
         app:menu="@menu/student_nav_menu" />
 
-    </androidx.drawerlayout.widget.DrawerLayout>
-
-
 </androidx.drawerlayout.widget.DrawerLayout>
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.drawerlayout.widget.DrawerLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:id="@+id/drawer_layout_student"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".ui.StudentDashboardActivity"-->
+<!--    tools:openDrawer="start">-->
+
+<!--        &lt;!&ndash; Main Content Area &ndash;&gt;-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical">-->
+
+<!--        &lt;!&ndash; Toolbar &ndash;&gt;-->
+<!--        <com.google.android.material.appbar.MaterialToolbar-->
+<!--            android:id="@+id/toolbar_student"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="?attr/actionBarSize"-->
+<!--            android:background="?attr/colorPrimary"-->
+<!--            app:titleTextColor="@color/white" />-->
+
+<!--        &lt;!&ndash; Fragment Container for Student Screens &ndash;&gt;-->
+<!--        <androidx.fragment.app.FragmentContainerView-->
+<!--            android:id="@+id/nav_host_fragment_student"-->
+<!--            android:name="androidx.navigation.fragment.NavHostFragment"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            app:defaultNavHost="true"-->
+<!--            app:navGraph="@navigation/student_nav_graph" />-->
+
+<!--        </LinearLayout>-->
+
+<!--        &lt;!&ndash; Navigation Drawer (Sidebar) &ndash;&gt;-->
+<!--    &lt;!&ndash; ... inside your DrawerLayout ... &ndash;&gt;-->
+<!--    <com.google.android.material.navigation.NavigationView-->
+<!--        android:id="@+id/navigation_view_student"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_gravity="start"-->
+<!--        app:headerLayout="@layout/student_nav_header"-->
+<!--        app:menu="@menu/student_nav_menu" />-->
+<!--    -->
+<!--&lt;!&ndash;    <com.google.android.material.navigation.NavigationView&ndash;&gt;-->
+<!--&lt;!&ndash;            android:id="@+id/navigation_view_student"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_gravity="start"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:headerLayout="@layout/nav_header"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:menu="@menu/student_nav_menu" />&ndash;&gt;-->
+<!--    <androidx.drawerlayout.widget.DrawerLayout-->
+<!--        xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--        xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--        xmlns:tools="http://schemas.android.com/tools"-->
+<!--        android:id="@+id/studentDrawerLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        tools:context=".StudentDashboardActivity"-->
+<!--        tools:openDrawer="start">-->
+
+<!--        &lt;!&ndash; Your main content (e.g., CoordinatorLayout with Toolbar and NavHostFragment) &ndash;&gt;-->
+<!--        <include-->
+<!--            layout="@layout/app_bar_student"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent" />-->
+
+<!--        &lt;!&ndash; Navigation Drawer &ndash;&gt;-->
+<!--        <com.google.android.material.navigation.NavigationView-->
+<!--            android:id="@+id/studentNavView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_gravity="start"-->
+<!--            app:headerLayout="@layout/nav_header"-->
+<!--        app:menu="@menu/student_nav_menu" />-->
+
+<!--    </androidx.drawerlayout.widget.DrawerLayout>-->
+
+
+<!--</androidx.drawerlayout.widget.DrawerLayout>-->
