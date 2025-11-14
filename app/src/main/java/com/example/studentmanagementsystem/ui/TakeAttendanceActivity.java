@@ -9,7 +9,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 import com.example.studentmanagementsystem.R;
-import com.example.studentmanagementsystem.adapter.StudentPagerAdapter;
+import com.example.studentmanagementsystem.adapter.StudentPageAdapter;
+import com.example.studentmanagementsystem.adapter.StudentPageAdapter;
+import com.example.studentmanagementsystem.adapter.TakeAttendanceAdapter;
 import com.example.studentmanagementsystem.api.ApiClient;
 import com.example.studentmanagementsystem.api.ApiServices;
 import com.example.studentmanagementsystem.model.ClassApiResponse;
@@ -17,7 +19,11 @@ import com.example.studentmanagementsystem.model.Student;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,7 +38,10 @@ public class TakeAttendanceActivity extends AppCompatActivity {
     private RelativeLayout navigationControls;
     private FloatingActionButton fabSubmit;
 
-    private StudentPagerAdapter pagerAdapter;
+    private StudentPageAdapter pageAdapter;
+    private static final int STUDENTS_PER_PAGE = 10;
+
+//    private StudentPagerAdapter pagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +91,7 @@ public class TakeAttendanceActivity extends AppCompatActivity {
         });
 
         fabSubmit.setOnClickListener(v -> {
-            if (pagerAdapter != null) {
+            if (pageAdapter != null) {
                 // Here you can get the attendance data and submit it
                 Toast.makeText(this, "Submitting attendance...", Toast.LENGTH_SHORT).show();
                 // Map<String, String> attendanceData = pagerAdapter.getAttendanceStatusMap();
@@ -145,24 +154,24 @@ public class TakeAttendanceActivity extends AppCompatActivity {
         navigationControls.setVisibility(View.VISIBLE);
         fabSubmit.setVisibility(View.VISIBLE);
 
-        pagerAdapter = new StudentPagerAdapter(students);
-        viewPager.setAdapter(pagerAdapter);
+        pageAdapter = new StudentPageAdapter(students, STUDENTS_PER_PAGE);
+        viewPager.setAdapter(pageAdapter);
 
-        // Initialize UI for the first page
+// Update total page count
         updateUiForPage(0);
+
     }
 
     private void updateUiForPage(int position) {
-        if (pagerAdapter == null) return;
-        int totalStudents = pagerAdapter.getItemCount();
+        if (pageAdapter == null) return;
+        int totalPages = pageAdapter.getItemCount();
 
-        // Update counter text
-        tvStudentCounter.setText((position + 1) + " / " + totalStudents);
+        tvStudentCounter.setText("Page " + (position + 1) + " / " + totalPages);
 
-        // Manage button visibility
         btnPrevious.setEnabled(position > 0);
-        btnNext.setEnabled(position < totalStudents - 1);
+        btnNext.setEnabled(position < totalPages - 1);
     }
+
 
 
     private void showLoading(boolean isLoading) {
@@ -175,17 +184,31 @@ public class TakeAttendanceActivity extends AppCompatActivity {
             fabSubmit.setVisibility(View.GONE);
         }
     }
-
     private void showError(String message) {
         // Hide everything and show the error message
         viewPager.setVisibility(View.GONE);
         navigationControls.setVisibility(View.GONE);
-        fabSubmit.setVisibility(View.GONE);
+        fabSubmit.setOnClickListener(v -> {
+            if (pageAdapter != null) {
+                Map<String, String> finalAttendance = new HashMap<>();
+
+                for (TakeAttendanceAdapter adapter : pageAdapter.getPageAdapters()) {
+                    finalAttendance.putAll(adapter.getAttendanceStatusMap());
+                }
+
+                Toast.makeText(this, "Submitting " + finalAttendance.size() + " records", Toast.LENGTH_SHORT).show();
+
+                // TODO: send 'finalAttendance' to API
+            }
+        });
+
         pbLoading.setVisibility(View.GONE);
 
         tvStatusMessage.setVisibility(View.VISIBLE);
         tvStatusMessage.setText(message);
     }
+
+
 }
 
 
