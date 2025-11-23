@@ -1,7 +1,9 @@
 package com.example.studentmanagementsystem.ui;
 
 import android.content.Intent;
+import android.icu.util.Calendar;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -24,10 +26,16 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+//import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+
+import java.util.Locale;
 import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -51,6 +59,20 @@ public class TakeAttendanceActivity extends AppCompatActivity {
     private String selectedDate;
     private TextView tvTotalStudents;
     private TextView tvClassNameHeader; // Optional, if you want to set class name
+    private TextView textViewDate;
+
+    Calendar calendar = Calendar.getInstance();
+
+    // 1. Add Handler and Runnable for the live clock
+    private final Handler timeHandler = new Handler();
+    private final Runnable timeRunnable = new Runnable() {
+        @Override
+        public void run() {
+            updateDateTimeDisplay();
+            // Schedule the next update in 1 second (1000ms)
+            timeHandler.postDelayed(this, 1000);
+        }
+    };
 
 
     @Override
@@ -60,6 +82,8 @@ public class TakeAttendanceActivity extends AppCompatActivity {
 
         initializeViews();
         setupToolbar();
+        startLiveClock();
+        updateDateTimeDisplay();
         apiService = ApiClient.getClient(this).create(ApiServices.class);
 
         // Get data from the Intent passed by SetupAttendanceActivity
@@ -80,6 +104,28 @@ public class TakeAttendanceActivity extends AppCompatActivity {
         setupNavigationListeners();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        timeHandler.removeCallbacks(timeRunnable);
+    }
+
+    // 4. Helper method to start the clock
+    private void startLiveClock() {
+        timeHandler.post(timeRunnable);
+    }
+
+    // 5. Your existing method (slightly improved formatting)
+    private void updateDateTimeDisplay() {
+        if (textViewDate == null) return;
+
+        Calendar calendar = Calendar.getInstance();
+        // Use a single format string for cleaner output
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd\nHH:mm:ss", Locale.getDefault());
+        String currentDateTime = dateFormat.format(calendar.getTime());
+
+        textViewDate.setText(currentDateTime);
+    }
     private void initializeViews() {
         viewPager = findViewById(R.id.view_pager_attendance);
         pbLoading = findViewById(R.id.pb_loading);
@@ -91,8 +137,9 @@ public class TakeAttendanceActivity extends AppCompatActivity {
         fabSubmit = findViewById(R.id.fab_submit_attendance);
         tvTotalStudents = findViewById(R.id.tv_total_students);
         tvClassNameHeader = findViewById(R.id.tv_class_name_header);
-
+        textViewDate = findViewById(R.id.textViewDate);
     }
+
 
     private void setupToolbar() {
         MaterialToolbar toolbar = findViewById(R.id.toolbar_take_attendance);
