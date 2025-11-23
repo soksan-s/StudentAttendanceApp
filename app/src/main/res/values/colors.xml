@@ -10,6 +10,20 @@
     <color name="accentYellow">#FCD34D</color>
     <color name="bgWhite">#FFFFFF</color>
     <color name="textDark">#212121</color>
-    <color name="lightGray">#F3F4F6</color>
+    <color name="light_Gray">#F3F4F6</color>
+    <color name="Salmon">#FA8072</color>
+    <color name="IndianRed">#CD5C5C</color>
+    <color name="Brass">#E1C16E</color>
+    <color name="Brown">#A52A2A</color>
+    <color name="BurntSienna">#E97451</color>
+    <color name="Cognac">#834333</color>
+    <color name="Bright_Purple">#9F2B68</color>
+    <color name="Byzantium">#702963</color>
+    <color name="Dark_Pink"> #AA336A</color>
+    <color name="Iris">#5D3FD3</color>
+    <color name="Lavender">#E6E6FA</color>
+    <color name="Dark_Purple">#301934</color>
+
+
 
 </resources>

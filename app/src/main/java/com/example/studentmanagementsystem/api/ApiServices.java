@@ -1,5 +1,7 @@
 package com.example.studentmanagementsystem.api;
 
+import com.example.studentmanagementsystem.model.AttendanceSubmissionPayload;
+import com.example.studentmanagementsystem.model.AttendanceV2Submission;
 import com.example.studentmanagementsystem.model.ClassApiResponse;
 import com.example.studentmanagementsystem.model.LoginRequest;
 // We will create this new LoginResponseWrapper class
@@ -11,6 +13,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface ApiServices {
@@ -34,4 +37,25 @@ public interface ApiServices {
     // Add this new method to get the class details
     @GET("api/class") // The exact path from your URL
     Call<List<ClassApiResponse>> getClassForAttendance();
+
+    // Submits the attendance data using the new V2 format
+//    @POST("api/attendanceV2")
+//    Call<Void> submitAttendanceV2(@Body AttendanceV2Submission submission);
+
+    // ADD THIS: To get the list of standby classes
+    @GET("api/standby-classes")
+    Call<List<ClassApiResponse>> getStandbyClasses();
+
+    // ADD THIS: The new submission endpoint
+    // UPDATE THIS METHOD
+    @POST("api/dashboard/teacher/attendance")
+    Call<Void> submitAttendance(
+            @Header("Cookie") String sessionToken, // We will pass the cookie here
+            @Body AttendanceSubmissionPayload payload
+    );
+//    @POST("api/dashboard/teacher/attendance")
+//    Call<Void> submitAttendance(@Body AttendanceSubmissionPayload payload);
+
+
+
 }

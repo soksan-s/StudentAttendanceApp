@@ -3,5 +3,8 @@
     <style name="Theme.HiTech" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primaryGreen</item>
         <item name="colorOnPrimary">@color/bgWhite</item>
+        <item name="colorSecondary">@color/Iris</item>
+        <item name="colorOnSecondary">@color/light_Gray</item>
+        <item name="colorOnContainer">@color/Lavender</item>
     </style>
 </resources>

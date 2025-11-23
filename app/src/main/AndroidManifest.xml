@@ -45,6 +45,13 @@
             android:label="Student Dashboard"
             android:exported="false" />
 
+        <activity
+            android:name=".ui.SetupAttendanceActivity"
+            android:exported="false"
+            android:label="Setup Attendance"
+            android:parentActivityName=".ui.TeacherDashboardActivity">
+        </activity>
+
         <!-- 5. Take Attendance Activity: Launched from the Teacher Dashboard. -->
         <activity
             android:name=".ui.TakeAttendanceActivity"

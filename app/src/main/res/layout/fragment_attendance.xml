@@ -32,7 +32,7 @@
     <LinearLayout android:layout_width="0dp" android:layout_weight="1"
         android:layout_height="match_parent" android:orientation="vertical" android:paddingLeft="12dp">
         <TextView android:layout_height="match_parent" android:layout_width="match_parent" android:text="Jan 2023" android:textStyle="bold" android:layout_marginBottom="8dp"/>
-        <View android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/lightGray"/>
+        <View android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/design_default_color_primary_variant"/>
         <!-- Placeholder for calendar view. You can substitute with Material Calendar or third party calendar -->
     </LinearLayout>
 </LinearLayout>

@@ -36,6 +36,7 @@ dependencies {
     implementation libs.constraintlayout
     implementation libs.volley
     implementation libs.swiperefreshlayout
+    implementation libs.camera.camera2.pipe
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core

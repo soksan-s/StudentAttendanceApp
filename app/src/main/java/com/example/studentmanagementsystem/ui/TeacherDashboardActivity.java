@@ -81,8 +81,12 @@ public class TeacherDashboardActivity extends AppCompatActivity {
             int itemId = item.getItemId();
 
             if (itemId == R.id.nav_take_attendance) {
-                // Launch TakeAttendanceActivity
-                startActivity(new Intent(TeacherDashboardActivity.this, TakeAttendanceActivity.class));
+                // --- CHANGE THIS LINE ---
+                // Old (Wrong): startActivity(new Intent(TeacherDashboardActivity.this, TakeAttendanceActivity.class));
+
+                // New (Correct): Go to SetupAttendanceActivity first
+                startActivity(new Intent(TeacherDashboardActivity.this, SetupAttendanceActivity.class));
+
             } else if (itemId == R.id.nav_view_performance) {
                 // Placeholder for View Performance feature
                 Toast.makeText(this, "View Performance Clicked", Toast.LENGTH_SHORT).show();
@@ -99,6 +103,33 @@ public class TeacherDashboardActivity extends AppCompatActivity {
             return true;
         });
     }
+
+
+
+//worked code
+//    private void setupNavigationListener() {
+//        navigationView.setNavigationItemSelectedListener(item -> {
+//            int itemId = item.getItemId();
+//
+//            if (itemId == R.id.nav_take_attendance) {
+//                // Launch TakeAttendanceActivity
+//                startActivity(new Intent(TeacherDashboardActivity.this, TakeAttendanceActivity.class));
+//            } else if (itemId == R.id.nav_view_performance) {
+//                // Placeholder for View Performance feature
+//                Toast.makeText(this, "View Performance Clicked", Toast.LENGTH_SHORT).show();
+//            } else if (itemId == R.id.nav_get_report) {
+//                // Placeholder for Get Report feature
+//                Toast.makeText(this, "Get Report Clicked", Toast.LENGTH_SHORT).show();
+//            } else if (itemId == R.id.nav_logout) {
+//                // Handle Logout
+//                logoutUser();
+//            }
+//
+//            // Close the drawer after an item is tapped.
+//            drawerLayout.closeDrawer(GravityCompat.START);
+//            return true;
+//        });
+//    }
 
     private void logoutUser() {
         Prefs.getInstance(getApplicationContext()).clearUserData();

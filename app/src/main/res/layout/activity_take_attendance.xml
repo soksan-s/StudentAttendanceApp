@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:title="Take Attendance"
-            android:background="?attr/colorPrimary"
+            android:background="?attr/colorOnBackground"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -30,6 +30,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- Header Card for Class Info & Total Count -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardElevation="2dp"
+            android:layout_alignParentTop="true"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/tv_class_name_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Class 10A"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <!-- THIS IS THE NEW TOTAL COUNT TEXTVIEW -->
+            <TextView
+                android:id="@+id/tv_total_students"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@android:color/holo_blue_dark"
+                tools:text="Total Students: 25" />
+        </LinearLayout>
 
         <!-- This ViewPager2 will display one student at a time -->
         <androidx.viewpager2.widget.ViewPager2
@@ -109,7 +142,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
+        android:layout_marginBottom="70dp"
+        android:layout_marginRight="20dp"
         android:contentDescription="Submit Attendance"
         app:srcCompat="@drawable/correct_right"
         android:visibility="gone"
