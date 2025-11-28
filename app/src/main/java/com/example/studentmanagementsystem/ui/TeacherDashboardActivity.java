@@ -89,7 +89,8 @@ public class TeacherDashboardActivity extends AppCompatActivity {
 
             } else if (itemId == R.id.nav_view_performance) {
                 // Placeholder for View Performance feature
-                Toast.makeText(this, "View Performance Clicked", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(TeacherDashboardActivity.this, ViewPerformanceActivity.class));
+//                Toast.makeText(this, "View Performance Clicked", Toast.LENGTH_SHORT).show();
             } else if (itemId == R.id.nav_get_report) {
                 // Placeholder for Get Report feature
                 Toast.makeText(this, "Get Report Clicked", Toast.LENGTH_SHORT).show();

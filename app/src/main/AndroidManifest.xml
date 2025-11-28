@@ -46,6 +46,12 @@
             android:exported="false" />
 
         <activity
+            android:name=".ui.ViewPerformanceActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.TeacherDashboardActivity" /> <!-- Adjust parent as needed -->
+
+
+        <activity
             android:name=".ui.SetupAttendanceActivity"
             android:exported="false"
             android:label="Setup Attendance"
