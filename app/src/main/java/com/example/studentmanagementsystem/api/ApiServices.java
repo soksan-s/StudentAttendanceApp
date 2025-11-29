@@ -6,6 +6,7 @@ import com.example.studentmanagementsystem.model.ClassApiResponse;
 import com.example.studentmanagementsystem.model.LoginRequest;
 // We will create this new LoginResponseWrapper class
 import com.example.studentmanagementsystem.model.LoginResponseWrapper;
+import com.example.studentmanagementsystem.model.StudentAttendanceResponse;
 import com.example.studentmanagementsystem.model.User;
 
 import java.util.List;
@@ -55,6 +56,8 @@ public interface ApiServices {
     );
 //    @POST("api/dashboard/teacher/attendance")
 //    Call<Void> submitAttendance(@Body AttendanceSubmissionPayload payload);
+    @GET("api/dashboard/student/attendance")
+    Call<StudentAttendanceResponse> getStudentAttendance(@Header("Cookie") String sessionCookie);
 
 
 

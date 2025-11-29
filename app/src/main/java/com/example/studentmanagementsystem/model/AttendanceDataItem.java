@@ -19,6 +19,17 @@ public class AttendanceDataItem {
             this.status = status != null ? status.toUpperCase() : "ABSENT";
         }
 
+        public String getStudentId() {
+            return studentId;
+        }
+
+        public String getDate() {
+            return date;
+        }
+
+        public String getStatus() {
+            return status;
+        }
 
 //    @SerializedName("studentId")
 //    private String studentId;

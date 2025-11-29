@@ -46,9 +46,33 @@
             android:exported="false" />
 
         <activity
+            android:name=".ui.StudentAttendanceActivity"
+            android:label="Student Attendance"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.StudentScheduleActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.StudentEventsActivity"
+            android:label="Student Attendance"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.StudentProfileActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.StudentDashboardActivity" />
+
+        <activity
             android:name=".ui.ViewPerformanceActivity"
             android:exported="false"
             android:parentActivityName=".ui.TeacherDashboardActivity" /> <!-- Adjust parent as needed -->
+
+        <activity
+            android:name=".ui.GetReportActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.TeacherDashboardActivity" />
 
 
         <activity
