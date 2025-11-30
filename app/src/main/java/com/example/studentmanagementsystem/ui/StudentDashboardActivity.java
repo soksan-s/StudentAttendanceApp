@@ -30,6 +30,9 @@ import com.example.studentmanagementsystem.util.Prefs;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SwitchCompat;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,6 +61,16 @@ public class StudentDashboardActivity extends AppCompatActivity implements Navig
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // 1. Load Theme Preference BEFORE setContentView
+        SharedPreferences prefs = getSharedPreferences("AppSetting", MODE_PRIVATE);
+        boolean isDarkMode = prefs.getBoolean("dark_mode", false);
+        if (isDarkMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
         setContentView(R.layout.activity_student_dashboard);
 
         initializeViews();
@@ -90,6 +103,32 @@ public class StudentDashboardActivity extends AppCompatActivity implements Navig
         toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.black));
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        // --- DARK MODE LOGIC START ---
+        // Find the menu item
+        MenuItem menuItem = navigationView.getMenu().findItem(R.id.nav_dark_mode);
+        // Find the switch inside the layout
+        SwitchCompat themeSwitch = (SwitchCompat) menuItem.getActionView().findViewById(R.id.switch_dark_mode);
+
+        // Set current state based on current mode
+        SharedPreferences prefs = getSharedPreferences("AppSetting", MODE_PRIVATE);
+        boolean isDarkMode = prefs.getBoolean("dark_mode", false);
+        themeSwitch.setChecked(isDarkMode);
+
+        // Handle Click
+        themeSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            SharedPreferences.Editor editor = getSharedPreferences("AppSetting", MODE_PRIVATE).edit();
+
+            if (isChecked) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                editor.putBoolean("dark_mode", true);
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                editor.putBoolean("dark_mode", false);
+            }
+            editor.apply();
+        });
+        // --- DARK MODE LOGIC END ---
     }
 
     private void loadUserData() {

@@ -1,38 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_student_home"
-            android:icon="@android:drawable/ic_menu_compass"
+            android:icon="@drawable/home"
             android:title="Home" />
 
         <item
             android:id="@+id/nav_student_attendance"
-            android:icon="@android:drawable/ic_menu_my_calendar"
+            android:icon="@drawable/check"
             android:title="My Attendance" />
 
         <item
             android:id="@+id/nav_student_schedule"
-            android:icon="@android:drawable/ic_menu_my_calendar"
+            android:icon="@drawable/calendar_check"
             android:title="Class Schedule" />
 
         <item
             android:id="@+id/nav_student_events"
-            android:icon="@android:drawable/ic_menu_agenda"
+            android:icon="@drawable/appointment"
             android:title="Events" />
 
         <item
             android:id="@+id/nav_student_profile"
-            android:icon="@android:drawable/ic_menu_my_calendar"
+            android:icon="@drawable/profile"
             android:title="My Profile" />
     </group>
+
+    <item android:title="Settings">
+        <menu>
+            <item
+                android:id="@+id/nav_dark_mode"
+                android:title="Dark Mode"
+                android:icon="@drawable/moon"
+                app:actionLayout="@layout/layout_switch_item" />
+            <!-- We will create this layout next -->
+        </menu>
+    </item>
 
     <item android:title="Account">
         <menu>
             <item
                 android:id="@+id/nav_student_logout"
-                android:icon="@android:drawable/ic_lock_power_off"
+                android:icon="@drawable/logout_24dp"
                 android:title="Logout" />
         </menu>
     </item>

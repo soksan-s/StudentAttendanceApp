@@ -4,4 +4,7 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
+    <style name="Theme.StudentManagementSystem.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.StudentManagementSystem.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

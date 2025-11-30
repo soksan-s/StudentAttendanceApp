@@ -1,29 +1,50 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.StudentManagementSystem" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-        <!-- Customize your primary colors using your defined colors.xml -->
-        <item name="colorPrimary">@color/primaryGreen</item>
-        <item name="colorPrimaryVariant">@color/primaryGreen</item> <!-- You can create a darker green or reuse the primary one -->
+    <style name="Base.Theme.StudentManagementSystem" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/my_primary</item>
+        <item name="colorPrimaryVariant">@color/my_primary_variant</item>
         <item name="colorOnPrimary">@color/white</item>
-
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/secondaryRed</item>
-        <item name="colorSecondaryVariant">@color/secondaryRed</item>
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
-
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <item name="android:fontFamily">@font/roboto_regular</item>
-
     </style>
 
-        <style name="Theme.StudentAttendanceSystem.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-        <style name="Theme.StudentAttendanceSystem.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-
-
     <style name="Theme.StudentManagementSystem" parent="Base.Theme.StudentManagementSystem" />
+    <style name="Theme.StudentManagementSystem.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.StudentManagementSystem.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>
+
+
+    <!--<resources xmlns:tools="http://schemas.android.com/tools">-->
+<!--    &lt;!&ndash; Base application theme. &ndash;&gt;-->
+<!--    <style name="Base.Theme.StudentManagementSystem" parent="Theme.Material3.DayNight.NoActionBar">-->
+<!--        &lt;!&ndash; Customize your light theme here. &ndash;&gt;-->
+<!--        &lt;!&ndash; <item name="colorPrimary">@color/my_light_primary</item> &ndash;&gt;-->
+<!--        &lt;!&ndash; Customize your primary colors using your defined colors.xml &ndash;&gt;-->
+<!--        <item name="colorPrimary">@color/primaryGreen</item>-->
+<!--        <item name="colorPrimaryVariant">@color/primaryGreen</item> &lt;!&ndash; You can create a darker green or reuse the primary one &ndash;&gt;-->
+<!--        <item name="colorOnPrimary">@color/white</item>-->
+
+<!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
+<!--        <item name="colorSecondary">@color/secondaryRed</item>-->
+<!--        <item name="colorSecondaryVariant">@color/secondaryRed</item>-->
+<!--        <item name="colorOnSecondary">@color/black</item>-->
+
+<!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
+<!--        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>-->
+<!--        <item name="android:fontFamily">@font/roboto_regular</item>-->
+
+<!--    </style>-->
+
+<!--        <style name="Theme.StudentAttendanceSystem.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />-->
+
+<!--        <style name="Theme.StudentAttendanceSystem.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />-->
+
+
+
+<!--    <style name="Theme.StudentManagementSystem" parent="Base.Theme.StudentManagementSystem" />-->
+<!--</resources>-->

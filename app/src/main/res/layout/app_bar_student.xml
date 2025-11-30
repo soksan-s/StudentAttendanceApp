@@ -9,14 +9,15 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/Theme.StudentAttendanceSystem.AppBarOverlay">
+        android:theme="@style/Theme.StudentManagementSystem.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/Brass"
-            app:popupTheme="@style/Theme.StudentAttendanceSystem.PopupOverlay" />
+            android:background="@color/toolbar_background"
+            app:popupTheme="@style/Theme.StudentManagementSystem.PopupOverlay" />
+
 
     </com.google.android.material.appbar.AppBarLayout>
 

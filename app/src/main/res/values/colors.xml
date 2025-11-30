@@ -24,6 +24,16 @@
     <color name="Lavender">#E6E6FA</color>
     <color name="Dark_Purple">#301934</color>
 
+    <!-- Dynamic Colors (Day Mode) -->
+    <color name="app_background">#F5F5F5</color>      <!-- Light Gray for Day -->
+    <color name="text_color_primary">#000000</color>  <!-- Black Text for Day -->
 
+    <!-- ADDED THESE MISSING ONES: -->
+    <color name="toolbar_background">#3D06C3</color>  <!-- Your Brass Color for Day -->
+    <color name="card_background">#FFFFFF</color>     <!-- White Cards for Day -->
 
+    <!-- System Colors -->
+    <color name="my_primary">#6200EE</color>
+    <color name="my_primary_variant">#3700B3</color>
+    <color name="teal_700">#018786</color>
 </resources>

@@ -13,7 +13,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F8F9FA">
+        android:background="@color/app_background">
 
         <!-- Toolbar -->
         <com.google.android.material.appbar.AppBarLayout
@@ -25,7 +25,7 @@
                 android:id="@+id/toolbar_teacher"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
+                android:background="@color/toolbar_background"
                 app:title="Teacher Dashboard"
                 app:navigationIcon="@android:drawable/ic_menu_sort_by_size" />
         </com.google.android.material.appbar.AppBarLayout>

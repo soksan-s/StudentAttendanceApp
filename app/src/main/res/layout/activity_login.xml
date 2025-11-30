@@ -24,7 +24,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/ic_person_outline"
+            android:src="@drawable/profile_circle"
             android:layout_marginBottom="20dp"
             android:contentDescription="Logo" />
 
@@ -51,7 +51,6 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
             app:startIconDrawable="@drawable/ic_person_outline"
             app:boxBackgroundMode="filled"
             app:boxBackgroundColor="#FFFFFF"
